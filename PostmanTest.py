@@ -1,7 +1,9 @@
 import requests, json, hmac, hashlib, datetime, base64, string, random
+from RandomAttributes import random_job
+import os, time
 
-key = 'x'
-secret = 'x'
+key = 'XX'
+secret = 'XX'
 destination = 'hp.odsca'
 baseUrl = 'https://orders.oneflow.io'
 
@@ -27,22 +29,35 @@ def request_post(path, data):
 
 
 def submit_order(order):
-    print("Submitting Order")
     return request_post('/api/order', order)
 
 
-def random_job():
-    with open('JSONTemplate.txt') as json_file:
-        data = json.load(json_file)
-        random_int = random.randint(0,100000)
-        data['orderData']['sourceOrderId'] = 'PythonTest_' + str(random_int)
-    with open('x\Test_'+str(random_int)+'.json', 'w', encoding='utf-8') as f:
+def random_job_json():
+    random_int = random.randint(0, 100000)
+    data = random_job(100000)
+    data['destination']['name'] = destination
+    data['orderData']['sourceOrderId'] = 'PythonTest_' + str(random_int)
+    data['orderData']['items'][0]['description'] = str(100000)
+    with open('XX'+str(random_int)+'.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
     return 'Test_'+str(random_int)
 
 
+def watch_folder():
+    path_to_watch = "XX"
+    before = dict([(f,None) for f in os.listdir(path_to_watch)])
+    while 1:
+        time.sleep(1)
+        after = dict([(f,None) for f in os.listdir(path_to_watch)])
+        added = [f for f in after if f not in before]
+        if added:
+            for item in added:
+                path = 'XX'
+                contents = open(path+item,'rb').read()
+                print(submit_order(contents).json())
+        before = after
+
+
 if __name__ == "__main__":
-    a = random_job()
-    path = 'x'
-    contents = open(path+a+'.json','rb').read()
-    print(submit_order(contents).json())
+    watch_folder()
+    
