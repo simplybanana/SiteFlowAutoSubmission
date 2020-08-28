@@ -12,7 +12,6 @@ def create_headers(method, path, timestamp):
     string_to_sign = string_to_sign.encode('utf-8')
     signature = hmac.new(local_secret, string_to_sign, hashlib.sha1).hexdigest()
     auth = key + ':' + signature
-    print(auth)
     return {'Content-Type': 'application/json',
         'x-oneflow-authorization': auth,
         'x-oneflow-date': timestamp,
@@ -20,9 +19,7 @@ def create_headers(method, path, timestamp):
 
 
 def request_post(path, data):
-    print("In request_post() function")
     timestamp = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
-    print(" Timestamp: ", timestamp)
     url = baseUrl + path
     headers = create_headers("POST", path, timestamp)
     result = requests.post(url, data, headers=headers)
