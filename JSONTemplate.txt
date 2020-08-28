@@ -1,0 +1,93 @@
+{
+    "destination": {
+        "name": "hp.odsca"
+    },
+    "orderData": {
+        "sourceOrderId": "BatchTemplateTest_{{$randomInt}}",
+        "customerName": "ODS-PE",
+        "purchaseOrderNumber": "613817",
+        "email": "Testing@onieldata.com",
+        "items": [
+            {
+                "description": "JobNumber:620574, FileNumber:102637 ",
+                "sku": "LMTEST",
+                "sourceItemId": "BillsPerf_Remit_NC_PG4",
+                "barcode": "{{$randomInt}}",
+                "quantity": 1,
+                "extraData": {
+                    "Plant": "CA"
+                },
+                "components": [
+                    {
+                        "code": "Letter",
+                        "fetch": false,
+                        "localFile": true,
+                        "attributes": {
+                            "Enclosure1": "InvCode",
+                            "Enclosure2": " ",
+                            "Enclosure3": " ",
+                            "Enclosure4": " ",
+                            "Enclosure5": " ",
+                            "Enclosure6": " ",
+                            "Enclosure7": " ",
+                            "Enclosure8": " ",
+                            "Enclosure9": " ",
+                            "Enclosure10": " ",
+                            "Enclosure11": " ",
+                            "Enclosure12": " ",
+                            "Enclosure13": " ",
+                            "Enclosure14": " ",
+                            "Enclosures": "1",
+                            "insertTargetGroup": "G1",
+                            "Perforated": false,
+                            "Matching": 0,
+                            "MinResourceNumber": 1,
+                            "MaxResourceNumber": 1,
+                            "FileNumber": "102637",
+                            "BeginBarCode": "17377479878",
+                            "EndBarCode": "17377480017",
+                            "PDFPages": 9000,
+                            "BatchID": "620574-2",
+                            "NumberRecords": 300,
+                            "PressProfile": "17in Letters",
+                            "PaperProfile": "17in 50#",
+                            "InputMethod": "12x18-60lb-CnC-Letter",
+                            "ColorSetup": "MONO90_V2_1",
+                            "FoldType": "Tri",
+                            "insertType": "Envelope",
+                            "ImpositionLocation": "8.5x11_Slit-n-merge_34in_Dual_roll_in YURI SPECIAL"
+                        },
+                        "path": "613817\\LT_Slit-Merge\\613817-101969-BillsPerf-Remit-NC-PG4-LT_Slit-Merge-PG-001.PDF"
+                    },
+                    {
+                        "code": "Collateral",
+                        "fetch": false,
+                        "localFile": true,
+                        "path": "test"
+                    }
+                ]
+            }
+        ],
+        "stockItems": [],
+        "shipments": [
+            {
+                "shipByDate": "2020-06-26",
+                "slaDays": 4,
+                "canShipEarly": true,
+                "shipTo": {
+                    "name": "Not Applicable",
+                    "companyName": "Not Applicable",
+                    "address1": "Not Applicable",
+                    "state": "Not Applicable",
+                    "town": "Not Applicable",
+                    "postcode": "Not Applicable",
+                    "isoCountry": "Not Applicable"
+                },
+                "carrier": {
+                    "code": "customer",
+                    "service": "delivery"
+                }
+            }
+        ]
+    }
+}
