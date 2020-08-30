@@ -45,17 +45,17 @@ def random_job_json():
 
 def watch_folder():
     path_to_watch = "XX"
-    before = dict([(f,None) for f in os.listdir(path_to_watch)])
+    destination_path = "XXX"
     while 1:
+        print('Searching....')
         time.sleep(1)
-        after = dict([(f,None) for f in os.listdir(path_to_watch)])
-        added = [f for f in after if f not in before]
+        added = os.listdir(path_to_watch)
         if added:
+            print('Processing files...')
             for item in added:
-                path = 'XX'
-                contents = open(path+item,'rb').read()
+                contents = open(path_to_watch+item,'rb').read()
                 print(submit_order(contents).json())
-        before = after
+                shutil.move(path_to_watch + item, destination_path)
 
 
 if __name__ == "__main__":
