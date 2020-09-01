@@ -48,13 +48,14 @@ def watch_folder():
     destination_path = "XXX"
     while 1:
         print('Searching....')
-        time.sleep(1)
+        time.sleep(3)
         added = os.listdir(path_to_watch)
         if added:
             print('Processing files...')
             for item in added:
                 contents = open(path_to_watch+item,'rb').read()
-                print(submit_order(contents).json())
+                submit_order(contents)
+                print('Submitted!\n')
                 shutil.move(path_to_watch + item, destination_path)
 
 
